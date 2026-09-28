@@ -1,0 +1,1180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agency AI Studios · Human creativity, AI-amplified</title>
+<meta name="description" content="Agency AI Studios is an AI-first production studio. Design, create, scale and monetize stories with human creativity and AI working in concert.">
+<link rel="canonical" href="https://agencyaistudios.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Agency AI Studios">
+<meta property="og:url" content="https://agencyaistudios.com/">
+<meta property="og:title" content="Agency AI Studios · Human creativity, AI-amplified">
+<meta property="og:description" content="An AI-first production studio. Design, create, scale and monetize stories with human creativity and AI working in concert.">
+<meta property="og:image" content="https://agencyaistudios.com/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Agency AI Studios logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://agencyaistudios.com/assets/og.jpg">
+<meta name="theme-color" content="#05070c">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='180 190 670 580'><rect x='180' y='190' width='670' height='580' fill='%2305070c'/><path d='M473 212L513 258L296 740H205ZM553 212L513 258L740 740H825Z' fill='%23aeb6c4'/><path d='M513 258L296 740M513 258L740 740' stroke='%233d8bff' stroke-width='22' fill='none'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrollcraft.css">
+<style>
+:root {
+  --sc-canvas:     #05070c;
+  --sc-surface:    #0b1220;
+  --sc-ink:        #e8edf6;
+  --sc-ink-soft:   #8d9bb3;
+  --sc-accent:     #3d8bff;
+  --sc-accent-ink: #04070c;
+  --sc-font-display: "Archivo", system-ui, sans-serif;
+  --sc-font-text:    "Geist", system-ui, sans-serif;
+  --sc-font-mono:    "Geist Mono", ui-monospace, monospace;
+  --sc-shadow-color: 220 60% 2%;
+  --beam-a: #3d8bff; --beam-b: #a9cdff;
+  --beam: linear-gradient(90deg, var(--beam-a), var(--beam-b));
+  --charge: 0;
+  --sc-measure: 68ch;
+  --sc-track-tight: -.03em; --sc-track-snug: -.02em;
+}
+.g:not(.g-light) .sc-body, .g:not(.g-light) .sc-lede, .g:not(.g-light) p { letter-spacing: .004em; }
+.g:not(.g-light) .sc-body { line-height: 1.68; font-weight: 450; }
+.g-light .sc-body { line-height: 1.62; }
+/* section grounds: hard cuts, dark / light / brand blue */
+.g { background: var(--sc-canvas); color: var(--sc-ink); }
+.g > [data-sc-stage] { background: var(--sc-canvas); }
+.g-light {
+  --sc-canvas: #f3f6fb; --sc-surface: #e4ebf5; --sc-ink: #0a1220; --sc-ink-soft: #465570;
+  --sc-accent: #1d68d8; --sc-accent-ink: #ffffff; --beam-a: #1d68d8; --beam-b: #6aa8ff;
+}
+.g-blue {
+  --sc-canvas: #0a2a5e; --sc-surface: #103a7c; --sc-ink: #f4f8ff; --sc-ink-soft: #bcd0ef;
+  --sc-accent: #8fc0ff; --sc-accent-ink: #04122b; --beam-a: #ffffff; --beam-b: #7fb6ff;
+}
+.g-blue { background: radial-gradient(70% 60% at 75% 40%, #1a4a97, #0a2a5e 70%); }
+.g-blue > [data-sc-stage] { background: radial-gradient(70% 60% at 75% 40%, #1a4a97, #0a2a5e 70%); }
+h1, h2, h3, .disp { font-family: var(--sc-font-display); font-stretch: 112%; font-weight: 600; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+ul { list-style: none; margin: 0; padding: 0; }
+.blue { color: var(--sc-accent); }
+.sc-label { color: var(--sc-accent); }
+.sc-lede { color: var(--sc-ink); }
+
+/* ---------- bar ---------- */
+.bar {
+  position: fixed; inset: 0 0 auto 0; z-index: var(--sc-z-chrome);
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: .85rem var(--sc-gutter);
+  background: rgb(5 7 12 / .9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgb(232 237 246 / .08);
+}
+.brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+.brand__mark { width: 34px; height: auto; flex: none; }
+.brand__word {
+  font-family: var(--sc-font-display); font-stretch: 118%; font-weight: 600;
+  font-size: .72rem; letter-spacing: .2em; white-space: nowrap;
+}
+.brand__word em { font-style: normal; color: var(--sc-accent); }
+.cta {
+  display: inline-flex; align-items: center; justify-content: center; white-space: nowrap;
+  padding: .85rem 1.5rem; border-radius: 3px; text-decoration: none;
+  background: var(--sc-accent); color: var(--sc-accent-ink);
+  font-family: var(--sc-font-display); font-stretch: 108%; font-weight: 600; font-size: .92rem; letter-spacing: .02em;
+  box-shadow: var(--sc-e2), inset 0 1px 0 rgb(255 255 255 / .28);
+  transition: transform 140ms var(--sc-ease-out), background-color 140ms var(--sc-ease-out);
+}
+.cta:active { transform: translateY(1px) scale(.98); }
+.cta--sm { padding: .6rem 1.05rem; font-size: .82rem; }
+@media (hover: hover) and (pointer: fine) { .cta:hover { background: #6ba6ff; } }
+
+/* mini logo: charges with page progress */
+.mk-fill { fill: #12161f; }
+.mk-edge { stroke: #b9c2d2; stroke-width: 18; fill: none; opacity: .8; }
+.mk-dim { stroke: #3d8bff; stroke-width: 26; fill: none; opacity: .22; }
+.mk-live { stroke: #6aa8ff; stroke-width: 26; fill: none; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--charge)); }
+
+/* ---------- hero ---------- */
+.hero .sc-stage { background: var(--sc-canvas); }
+.plane { position: absolute; inset: 0; pointer-events: none; }
+.plane--haze {
+  inset: -12% -8%;
+  background:
+    radial-gradient(48% 42% at 66% 52%, rgb(61 139 255 / .20), transparent 70%),
+    radial-gradient(60% 50% at 20% 90%, rgb(61 139 255 / .07), transparent 70%);
+}
+.plane--grid {
+  inset: 42% -30% -30%;
+  background:
+    repeating-linear-gradient(90deg, rgb(141 155 179 / .12) 0 1px, transparent 1px 84px),
+    repeating-linear-gradient(0deg, rgb(141 155 179 / .10) 0 1px, transparent 1px 64px);
+  transform: perspective(700px) rotateX(64deg);
+  transform-origin: 50% 0;
+  mask-image: linear-gradient(#000 0%, transparent 78%);
+  -webkit-mask-image: linear-gradient(#000 0%, transparent 78%);
+}
+.hero__a {
+  position: absolute; left: 68%; top: 47%;
+  width: min(58vw, 68svh * 1.155);
+  translate: -50% -50%;
+  transform-origin: 49.7% 63.8%;
+  scale: calc(1 + var(--sc-p, 0) * 4.6);
+}
+.hero__a svg { width: 100%; height: auto; overflow: visible; }
+.hero__tilt { will-change: transform; }
+.a-fill-l { fill: url(#gl); } .a-fill-r { fill: url(#gr); } .a-fill-c { fill: url(#gc); }
+.a-silver { stroke: #dfe6f2; stroke-width: 3; fill: none; stroke-linecap: square; }
+.a-bloom  { stroke: #3d8bff; stroke-width: 22; fill: none; opacity: .18; }
+.a-blue   { stroke: #62a2ff; stroke-width: 4.5; fill: none; }
+.a-silver, .a-blue, .a-bloom { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.7s var(--sc-ease-in-out) .15s forwards; }
+.a-blue, .a-bloom { animation-delay: .55s; }
+.a-fill-l, .a-fill-r, .a-fill-c { opacity: 0; animation: fillin 1.1s var(--sc-ease-out) .9s forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes fillin { to { opacity: 1; } }
+.plane--front { z-index: 4; }
+.streak {
+  position: absolute; left: -10%; width: 70%; height: 1px;
+  background: linear-gradient(90deg, transparent, #3d8bff 40%, #cfe2ff 55%, transparent);
+  opacity: .5;
+}
+.streak--1 { top: 71%; rotate: -8deg; }
+.streak--2 { top: 24%; left: 44%; width: 62%; rotate: -8deg; opacity: .28; }
+.hero__flare {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: radial-gradient(40% 46% at 49.7% 62%, rgb(61 139 255 / .55), rgb(61 139 255 / .0) 72%);
+  opacity: calc(var(--sc-p, 0) * .9);
+}
+.hero .sc-copy { max-width: min(64rem, 92vw); z-index: 6; }
+.hero__name { display: inline-flex; margin-bottom: var(--sc-4); color: #cfe2ff; }
+.hero__name::before { background: var(--beam); }
+.hero h1 { font-size: clamp(2.5rem, 1rem + 4.6vw, 5.8rem); line-height: .98; letter-spacing: -.03em; }
+.hero h1 .blue { display: inline-block; }
+.hero .sc-body { margin-top: var(--sc-5); color: #a7b4ca; max-width: 40ch; }
+.hero .cta { margin-top: var(--sc-6); }
+.hero .sc-scrim { z-index: 5; }
+
+/* ---------- shared flow ---------- */
+.chapter { position: relative; padding-block: clamp(3.5rem, 7vw, 8rem); }
+.chapter--tight { padding-block-start: clamp(4.5rem, 8vw, 7rem); }
+.chapter--pre { padding-bottom: clamp(1.5rem, 3vw, 3rem); }
+.chapter h2 { font-size: var(--sc-t-3xl); line-height: 1; letter-spacing: -.03em; }
+.chapter .sc-label { display: block; margin-bottom: var(--sc-5); }
+.offset { margin-left: clamp(0rem, 12vw, 14rem); }
+.tick { position: relative; padding-block: clamp(1rem, 1.8vw, 1.6rem); border-top: 1px solid var(--sc-hairline-strong); }
+.tick::before {
+  content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 100%;
+  background: var(--beam); transform: scaleX(0); transform-origin: left;
+  transition: transform 700ms var(--sc-ease-out);
+}
+.tick.sc-in::before { transform: scaleX(.08); transition-delay: 240ms; }
+@media (hover: hover) and (pointer: fine) {
+  .tick:hover::before { transform: scaleX(1); transition-duration: 420ms; transition-delay: 0s; }
+}
+
+/* frontier + workflow */
+.flow-list .tick { display: flex; align-items: baseline; justify-content: space-between; gap: 2rem; }
+.flow-list h3 { font-size: var(--sc-t-xl); font-weight: 500; letter-spacing: -.025em; }
+.flow-list p { color: var(--sc-ink-soft); max-width: 28ch; text-align: right; font-size: var(--sc-t-sm); }
+.workflow { margin-top: clamp(5rem, 10vw, 9rem); }
+.workflow__intro { display: grid; gap: var(--sc-5); margin-bottom: var(--sc-8); }
+
+/* ---------- peak ---------- */
+.peak h2 { font-size: clamp(2.2rem, 1rem + 3.6vw, 4.6rem); line-height: 1; letter-spacing: -.03em; }
+.phil { list-style: none; margin: var(--sc-7) 0 0; padding: 0; counter-reset: ph; }
+.phil li {
+  position: relative; counter-increment: ph; container-type: inline-size;
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1rem 3rem; align-items: center;
+  padding: 1.5rem 0; border-top: 1px solid var(--sc-hairline-strong);
+}
+.phil li:last-child { border-bottom: 1px solid var(--sc-hairline-strong); }
+.phil li::before { content: ""; position: absolute; left: 0; top: -1px; height: 3px; width: 4rem; background: var(--beam); }
+.word {
+  display: block; font-family: var(--sc-font-display); font-stretch: 124%; font-weight: 700; text-transform: uppercase;
+  font-size: clamp(2rem, 7.4cqw, 6rem); line-height: 1; letter-spacing: -.03em; color: var(--sc-ink);
+}
+.phil p { font-size: var(--sc-t-lg); line-height: 1.45; letter-spacing: -.015em; max-width: 36ch; color: var(--sc-ink-soft); }
+.phil p::before { content: "0" counter(ph); display: block; margin-bottom: .5rem; color: var(--sc-accent); font: 700 var(--sc-t-sm)/1 var(--sc-font-mono); letter-spacing: .14em; }
+@media (hover: hover) and (pointer: fine) { .phil li:hover .word { color: var(--sc-accent); } .word { transition: color 200ms var(--sc-ease-out); } }
+
+/* ---------- belief ---------- */
+.belief { overflow: clip; padding-bottom: var(--gap); }
+.belief .sc-wrap { position: relative; z-index: 1; }
+.belief h2 { font-size: clamp(2.6rem, 1.2rem + 6vw, 6rem); line-height: .94; letter-spacing: -.03em; }
+.belief h2 span { display: block; }
+.belief h2 .amp { width: max-content; color: var(--sc-accent); padding-bottom: .1em; }
+.belief__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: start; margin-top: var(--sc-6); }
+.belief__grid .sc-lede { font-size: clamp(1.5rem, 1rem + 1.6vw, 2.4rem); line-height: 1.32; letter-spacing: -.03em; font-weight: 500; max-width: 24ch; }
+.belief__grid .sc-body { margin-top: 0; font-size: var(--sc-t-lg); max-width: 40ch; align-self: center; }
+.belief__img { position: relative; margin: var(--sc-6) 0 0; aspect-ratio: 16 / 9; max-height: 76vh; width: 100%; overflow: hidden; border-radius: 4px; box-shadow: var(--sc-e3); background: #05070c; }
+.belief__img img, .belief__img video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.belief__img figcaption { position: absolute; left: 1rem; bottom: 1rem; padding: .5rem 1rem; background: rgb(5 7 12 / .75); color: #e8edf6; border-radius: 2px; font: 600 var(--sc-t-xs)/1 var(--sc-font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.human { margin-top: var(--sc-8); }
+.human li { padding: 1.5rem 0 1.5rem clamp(0rem, 4vw, 4rem); border-top: 1px solid var(--sc-hairline-strong); font-family: var(--sc-font-display); font-stretch: 112%; font-weight: 600; font-size: clamp(1.6rem, 1rem + 2.6vw, 3.6rem); line-height: 1.05; letter-spacing: -.03em; position: relative; }
+.human li::before { content: ""; position: absolute; left: 0; top: -1px; height: 2px; width: 3.5rem; background: var(--beam); }
+.human li b { color: var(--sc-accent); font-weight: inherit; }
+.human li:last-child { border-bottom: 1px solid var(--sc-hairline-strong); }
+.belief__sign { margin-top: var(--sc-7); font-family: var(--sc-font-display); font-stretch: 112%; font-weight: 700; font-size: clamp(1.4rem, 1rem + 1.4vw, 2.2rem); letter-spacing: -.03em; color: var(--sc-accent); }
+
+/* ---------- pan panels ---------- */
+.rail { align-items: stretch; gap: clamp(3rem, 6vw, 6rem); padding: 0 var(--sc-gutter); height: 100%; }
+.rail > * { flex: none; }
+.rail__lead { width: clamp(19rem, 42vw, 40rem); align-self: center; padding-right: clamp(0rem, 2vw, 2rem); }
+.rail__lead h2 { font-size: clamp(2.1rem, 1rem + 3.4vw, 4.4rem); line-height: 1.02; letter-spacing: -.03em; overflow-wrap: anywhere; }
+.rail__end { width: clamp(16rem, 26vw, 26rem); align-self: center; font-size: var(--sc-t-xl); line-height: 1.32; letter-spacing: -.02em; }
+.rail__logo { width: min(100%, 22rem); height: auto; margin-top: var(--sc-5); mix-blend-mode: screen; }
+.rail__arrow { width: clamp(3rem, 6vw, 4.5rem); height: auto; margin-top: var(--sc-6); color: #f4f8ff; filter: drop-shadow(0 0 14px rgb(61 139 255 / .9)) drop-shadow(0 0 30px rgb(61 139 255 / .5)); animation: bob 1.4s var(--sc-ease-in-out) infinite, flash 1.4s var(--sc-ease-in-out) infinite; }
+.panel {
+  width: clamp(17rem, 30vw, 27rem); align-self: center; padding-top: var(--sc-5);
+  border-top: 1px solid var(--sc-hairline-strong); position: relative;
+}
+.panel::before { content: ""; position: absolute; left: 0; top: -1px; width: 3.5rem; height: 2px; background: var(--beam); }
+.panel h3 { font-size: clamp(1.9rem, 1.2rem + 1.7vw, 3rem); line-height: 1; letter-spacing: -.03em; font-weight: 600; }
+.panel p { margin-top: var(--sc-4); color: var(--sc-ink-soft); max-width: 30ch; }
+.panel--big { width: clamp(20rem, 46vw, 40rem); }
+.panel--big h3 { font-size: clamp(3rem, 1rem + 7vw, 6rem); letter-spacing: -.03em; font-stretch: 122%; }
+.pan .sc-stage { background: var(--sc-canvas); }
+.spec {
+  position: absolute; left: var(--sc-gutter); right: var(--sc-gutter); bottom: clamp(1.5rem, 5vh, 3rem);
+  container-type: inline-size; z-index: 3;
+}
+.spec__bar { height: 1px; background: var(--sc-hairline-strong); position: relative; margin-bottom: .8rem; }
+.spec__dot {
+  position: absolute; left: 0; top: -5px; width: 11px; height: 11px; background: var(--sc-accent); border-radius: 50%;
+  translate: calc(var(--sc-p, 0) * (100cqw - 11px)) 0;
+  box-shadow: 0 0 0 4px rgb(61 139 255 / .22);
+}
+.spec__ends { display: flex; justify-content: space-between; }
+.spec__ends span { font: 500 var(--sc-t-xs)/1 var(--sc-font-mono); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); }
+
+/* rails sit high so the entry slide has less empty ground */
+.pan .rail { padding-top: clamp(5.5rem, 20vh, 11rem); }
+.pan .rail > * { align-self: flex-start; }
+.pan .rail__lead, .pan .rail__end { align-self: flex-start; }
+
+/* keep-scrolling cues */
+.pan .sc-stage::after {
+  content: ""; position: absolute; inset: 0 0 0 auto; width: clamp(3rem, 9vw, 9rem); z-index: 2; pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--sc-canvas));
+  opacity: clamp(0, calc((.96 - var(--sc-p, 0)) * 14), 1);
+}
+.hint {
+  position: absolute; z-index: 5; right: var(--sc-gutter); bottom: clamp(4.4rem, 11vh, 6.4rem);
+  display: flex; align-items: center; gap: .8rem; pointer-events: none; white-space: nowrap;
+  font: 700 clamp(.95rem, .85rem + .4vw, 1.2rem)/1 var(--sc-font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--sc-ink);
+  opacity: clamp(0, calc((.95 - var(--sc-p, 0)) * 12), 1);
+}
+.hint > svg, .hint .steps { animation: flash 1.4s var(--sc-ease-in-out) infinite; }
+.hint svg { width: 22px; height: 28px; stroke-width: 2.6; color: var(--sc-accent); filter: drop-shadow(0 0 8px rgb(61 139 255 / .8)); animation: bob 1.4s var(--sc-ease-in-out) infinite, flash 1.4s var(--sc-ease-in-out) infinite; }
+@keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+@keyframes bob { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(4px); } }
+.steps { display: flex; gap: 6px; }
+.steps i { display: block; width: clamp(2rem, 3.4vw, 3rem); height: 4px; background: var(--sc-hairline-strong); position: relative; overflow: hidden; }
+.steps i::after { content: ""; position: absolute; inset: 0; background: var(--beam); transform-origin: left; transform: scaleX(0); }
+.steps i:nth-child(1)::after { transform: scaleX(var(--u0, 0)); } .steps i:nth-child(2)::after { transform: scaleX(var(--u1, 0)); }
+.steps i:nth-child(3)::after { transform: scaleX(var(--u2, 0)); } .steps i:nth-child(4)::after { transform: scaleX(var(--u3, 0)); }
+.hint--steps { left: var(--sc-gutter); right: auto; bottom: clamp(1.4rem, 4.5vh, 2.6rem); }
+
+/* ---------- frontier (full-bleed film, one line at a time) ---------- */
+.frontier .sc-stage { background: #05070c; }
+.fr__media { position: absolute; inset: 0; }
+.fr__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 900ms var(--sc-ease-out); }
+.frontier[data-i="0"] .fv0, .frontier[data-i="1"] .fv1, .frontier[data-i="2"] .fv2, .frontier[data-i="3"] .fv3 { opacity: 1; }
+.frontier .sc-scrim--band { z-index: 2; }
+.fr__head { position: absolute; z-index: 5; left: var(--sc-gutter); right: var(--sc-gutter); top: 5.5rem; max-width: 60rem; }
+.fr__head h2 { font-size: clamp(2.6rem, 1rem + 5.2vw, 6rem); line-height: .96; letter-spacing: -.03em; font-weight: 700; color: #f4f8ff; text-shadow: 0 2px 24px rgb(5 7 12 / .6); }
+.fr__lines { position: absolute; z-index: 5; left: var(--sc-gutter); right: var(--sc-gutter); bottom: clamp(6.5rem, 15vh, 9rem); height: 2.4em; max-width: 26ch;
+  font-family: var(--sc-font-display); font-stretch: 112%; font-weight: 700; font-size: clamp(2rem, 1rem + 3.2vw, 4.6rem); line-height: 1.06; letter-spacing: -.03em; color: #f4f8ff; text-shadow: 0 2px 20px rgb(5 7 12 / .85), 0 0 2px rgb(5 7 12 / .9); }
+.fl { position: absolute; left: 0; bottom: 0; margin: 0; opacity: 0; transform: translateY(28px); transition: opacity 420ms var(--sc-ease-out), transform 560ms var(--sc-ease-out); text-wrap: balance; }
+.fl.is-out { opacity: 0; transform: translateY(-22px); }
+.fl b { color: var(--sc-accent); font-weight: inherit; }
+.frontier[data-i="0"] .fl0, .frontier[data-i="1"] .fl1, .frontier[data-i="2"] .fl2, .frontier[data-i="3"] .fl3 { opacity: 1; transform: none; transition-delay: 120ms; }
+.frontier .sc-scrim--band { background: linear-gradient(transparent 40%, rgb(5 7 12 / .55) 70%, rgb(5 7 12 / .85)); }
+.frontier .hint--steps { left: auto; right: var(--sc-gutter); bottom: clamp(1.4rem, 4.5vh, 2.6rem); }
+
+/* ---------- create: film-strip accordion ---------- */
+.eco .sc-stage { background: var(--sc-canvas); }
+.eco__wrap { height: 100%; padding: clamp(5rem, 11vh, 7rem) var(--sc-gutter) 6rem; display: grid; grid-template-rows: auto 1fr auto; gap: 1.5rem; max-width: 96rem; margin-inline: auto; }
+.eco__head { display: block; }
+.eco__head h2 { font-size: clamp(2.2rem, 1rem + 3.6vw, 4.8rem); line-height: .98; letter-spacing: -.03em; }
+.eco__lead { position: relative; min-height: 2.6em; font-size: clamp(1.3rem, 1rem + 1.1vw, 2rem); line-height: 1.3; letter-spacing: -.015em; }
+.ed { position: absolute; left: 0; top: 0; margin: 0; max-width: 52ch; color: var(--sc-ink); opacity: 0; transform: translateY(12px); transition: opacity 420ms var(--sc-ease-out), transform 420ms var(--sc-ease-out); }
+.ed b { color: var(--sc-accent); font-weight: 700; }
+.eco[data-i="0"] .ed0, .eco[data-i="1"] .ed1, .eco[data-i="2"] .ed2, .eco[data-i="3"] .ed3 { opacity: 1; transform: none; }
+.mosaic { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: .75rem; min-height: 0; transition: grid-template-columns 700ms var(--sc-ease-in-out); }
+.eco[data-i="0"] .mosaic { grid-template-columns: 2.6fr 1fr 1fr 1fr; }
+.eco[data-i="1"] .mosaic { grid-template-columns: 1fr 2.6fr 1fr 1fr; }
+.eco[data-i="2"] .mosaic { grid-template-columns: 1fr 1fr 2.6fr 1fr; }
+.eco[data-i="3"] .mosaic { grid-template-columns: 1fr 1fr 1fr 2.6fr; }
+.mo { position: relative; overflow: hidden; border-radius: 4px; background: #05070c; min-height: clamp(12rem, 36vh, 26rem); max-height: 100%; filter: saturate(.25) brightness(.55); transition: filter 600ms var(--sc-ease-out), box-shadow 600ms var(--sc-ease-out); }
+.mo video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mo__cap { position: absolute; inset: auto 0 0 0; padding: 3rem 1.25rem 1.25rem; background: linear-gradient(transparent, rgb(5 7 12 / .9)); }
+.mo__cap h3 { font-size: clamp(1.1rem, .9rem + 1vw, 2rem); line-height: 1.05; letter-spacing: -.03em; color: #f4f8ff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.eco[data-i="0"] .mo0, .eco[data-i="1"] .mo1, .eco[data-i="2"] .mo2, .eco[data-i="3"] .mo3 { filter: none; box-shadow: 0 0 0 2px var(--sc-accent), var(--sc-e3); }
+.eco[data-i="0"] .mo0 h3, .eco[data-i="1"] .mo1 h3, .eco[data-i="2"] .mo2 h3, .eco[data-i="3"] .mo3 h3 { white-space: normal; font-size: clamp(1.5rem, 1rem + 1.6vw, 2.8rem); }
+
+/* ---------- distribution ---------- */
+.dist__grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 3rem 4rem; align-items: end; }
+.dist h2 { font-size: clamp(2.4rem, 1rem + 4.2vw, 5.6rem); line-height: .96; letter-spacing: -.03em; }
+.dist .sc-lede { margin-top: var(--sc-4); font-size: var(--sc-t-xl); line-height: 1.3; max-width: 34ch; }
+.dist__steps li { display: grid; gap: .25rem; }
+.dist__steps h3 { font-size: var(--sc-t-xl); font-weight: 600; letter-spacing: -.03em; }
+.dist__steps p { color: var(--sc-ink-soft); }
+.marq--dist { margin-top: var(--sc-7); }
+.marq--dist li { color: var(--sc-ink); }
+
+/* ---------- pipeline (infrastructure) ---------- */
+.pipe__grid {
+  height: 100%; padding: clamp(5.5rem, 11vh, 7rem) var(--sc-gutter) 4.5rem;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); align-items: center;
+  max-width: 92rem; margin-inline: auto;
+}
+.pipe__copy h2 { font-size: clamp(2rem, 1rem + 2.6vw, 3.6rem); line-height: 1; letter-spacing: -.03em; }
+.pipe__copy .sc-body { margin-top: var(--sc-4); }
+.phases { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: var(--sc-4); }
+.phases span {
+  padding: .45rem .8rem; border: 1px solid var(--sc-hairline-strong); border-radius: 2px;
+  font: 600 var(--sc-t-xs)/1 var(--sc-font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--sc-ink-soft);
+  transition: background-color 240ms var(--sc-ease-out), color 240ms var(--sc-ease-out), border-color 240ms var(--sc-ease-out);
+}
+.pipe[data-i="0"] .ph0, .pipe[data-i="1"] .ph1, .pipe[data-i="2"] .ph1, .pipe[data-i="3"] .ph2, .pipe[data-i="4"] .ph2 {
+  background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent);
+}
+.pl { margin-top: var(--sc-4); }
+.pipe .hint--steps { left: auto; right: var(--sc-gutter); bottom: 1.5rem; }
+.pl li { position: relative; display: grid; grid-template-rows: auto 0fr; padding: .6rem 0; border-top: 1px solid var(--sc-hairline-strong); opacity: .38; transition: opacity 300ms var(--sc-ease-out), grid-template-rows 360ms var(--sc-ease-out); }
+.pl li::before { content: ""; position: absolute; left: 0; top: -1px; height: 2px; width: 100%; background: var(--beam); transform-origin: left; transform: scaleX(0); }
+.pl li:nth-child(1)::before { transform: scaleX(var(--u0, 0)); } .pl li:nth-child(2)::before { transform: scaleX(var(--u1, 0)); }
+.pl li:nth-child(3)::before { transform: scaleX(var(--u2, 0)); } .pl li:nth-child(4)::before { transform: scaleX(var(--u3, 0)); }
+.pl li:nth-child(5)::before { transform: scaleX(var(--u4, 0)); }
+.pl h3 { font-size: var(--sc-t-lg); font-weight: 600; letter-spacing: -.03em; }
+.pl p { color: var(--sc-ink-soft); opacity: 0; min-height: 0; overflow: hidden; padding-top: .35rem; transition: opacity 300ms var(--sc-ease-out); }
+.pipe[data-i="0"] .pl li:nth-child(1), .pipe[data-i="1"] .pl li:nth-child(2), .pipe[data-i="2"] .pl li:nth-child(3),
+.pipe[data-i="3"] .pl li:nth-child(4), .pipe[data-i="4"] .pl li:nth-child(5) { opacity: 1; grid-template-rows: auto 1fr; }
+.pipe[data-i="0"] .pl li:nth-child(1) p, .pipe[data-i="1"] .pl li:nth-child(2) p, .pipe[data-i="2"] .pl li:nth-child(3) p,
+.pipe[data-i="3"] .pl li:nth-child(4) p, .pipe[data-i="4"] .pl li:nth-child(5) p { opacity: 1; }
+.pframe { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 4px; background: #05070c; box-shadow: var(--sc-e3); }
+.pframe video, .why__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 700ms var(--sc-ease-out); }
+.pipe[data-i="0"] .pv0, .pipe[data-i="1"] .pv1, .pipe[data-i="2"] .pv2, .pipe[data-i="3"] .pv3, .pipe[data-i="4"] .pv4 { opacity: 1; }
+
+/* ---------- moat (VFX before / after, scrubbed) ---------- */
+.moat .sc-scrim--band { z-index: 2; }
+.moat__copy { position: absolute; z-index: 6; left: var(--sc-gutter); right: var(--sc-gutter); bottom: clamp(2rem, 8vh, 4rem); max-width: 60rem; }
+.moat__copy > p { position: absolute; left: 0; bottom: 0; width: 100%; }
+.moat__copy .m0 { font: 600 clamp(2.2rem, 1rem + 4.4vw, 5.6rem)/1 var(--sc-font-display); font-stretch: 112%; letter-spacing: -.03em; text-wrap: balance; color: #f4f8ff; }
+.moat__copy .m1, .moat__copy .m2 { font-size: var(--sc-t-xl); line-height: 1.3; letter-spacing: -.02em; max-width: 34ch; text-wrap: pretty; color: #f4f8ff; }
+.vtag { position: absolute; z-index: 6; top: 5.5rem; left: var(--sc-gutter); display: flex; gap: .5rem; }
+.vtag span {
+  padding: .5rem 1rem; border-radius: 2px; background: rgb(5 7 12 / .7); border: 1px solid rgb(255 255 255 / .2); color: #e8edf6;
+  font: 600 var(--sc-t-xs)/1 var(--sc-font-mono); letter-spacing: .12em; text-transform: uppercase;
+  transition: background-color 240ms var(--sc-ease-out), color 240ms var(--sc-ease-out);
+}
+.moat[data-i="0"] .t0, .moat[data-i="1"] .t1 { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
+
+/* ---------- partners ---------- */
+.quad { display: grid; grid-template-columns: 1fr 1fr; margin-top: var(--sc-9); }
+.quad > div { padding: var(--sc-6) clamp(1rem, 3vw, 3rem) var(--sc-7) 0; border-top: 1px solid var(--sc-hairline-strong); position: relative; }
+.quad > div:nth-child(even) { padding-left: clamp(1rem, 3vw, 3rem); border-left: 1px solid var(--sc-hairline); }
+.quad h3 { font-size: clamp(1.8rem, 1rem + 2.6vw, 3.6rem); line-height: 1; letter-spacing: -.03em; }
+.quad p { margin-top: var(--sc-4); color: var(--sc-ink-soft); max-width: 36ch; }
+.quad > div::before { content: ""; position: absolute; left: 0; top: -1px; height: 2px; width: 3.5rem; background: var(--beam); }
+.quad > div:nth-child(even)::before { left: clamp(1rem, 3vw, 3rem); }
+
+/* ---------- why (pan, big type) ---------- */
+.why .sc-stage { background: var(--sc-canvas); }
+.why .panel { width: max-content; min-width: clamp(16rem, 30vw, 24rem); border-top: 0; padding-top: 0; margin-right: clamp(1rem, 4vw, 5rem); }
+.why .panel::before { display: none; }
+.why .panel h3 { font-size: clamp(3rem, 1rem + 9vw, 6rem); letter-spacing: -.03em; font-stretch: 125%; font-weight: 700; line-height: .95; }
+.why .panel h3 .ol { color: transparent; -webkit-text-stroke: 1.5px var(--sc-ink-soft); }
+.why .panel p { font-size: var(--sc-t-lg); max-width: 26ch; margin-top: var(--sc-5); color: var(--sc-ink); line-height: 1.35; }
+
+/* ---------- team ---------- */
+.team h2 { font-size: clamp(2.2rem, 1rem + 4.4vw, 5.4rem); line-height: 1; letter-spacing: -.03em; max-width: 20ch; }
+.team h2 span { display: block; color: var(--sc-ink-soft); }
+.team h2 span:last-child { color: var(--sc-ink); }
+.team__line { margin-top: var(--sc-7); font-family: var(--sc-font-display); font-stretch: 112%; font-weight: 600; font-size: var(--sc-t-xl); letter-spacing: -.03em; color: var(--sc-accent); }
+.marq { margin-top: var(--sc-9); overflow: hidden; border-block: 1px solid var(--sc-hairline-strong); padding-block: var(--sc-5); }
+.marq__t { display: flex; width: max-content; animation: marq 40s linear infinite; }
+.marq__t ul { display: flex; flex: none; }
+.marq li {
+  flex: none; padding-inline: clamp(1.5rem, 3vw, 3rem);
+  font-family: var(--sc-font-display); font-stretch: 118%; font-weight: 600; text-transform: uppercase;
+  font-size: clamp(1.4rem, 1rem + 2vw, 2.8rem); letter-spacing: -.02em; color: var(--sc-ink-soft);
+}
+.marq li::after { content: "/"; margin-left: clamp(1.5rem, 3vw, 3rem); color: var(--sc-accent); }
+@keyframes marq { to { transform: translateX(-50%); } }
+.marq-label { margin-top: var(--sc-9); }
+
+/* ---------- close ---------- */
+.close { background: var(--sc-canvas); }
+.close .sc-stage { background: var(--sc-canvas); }
+.close__inner {
+  position: absolute; left: var(--sc-gutter); bottom: clamp(7rem, 22vh, 12rem); max-width: 48rem; z-index: 4;
+}
+.close__q { color: var(--sc-ink-soft); font-size: var(--sc-t-lg); letter-spacing: -.015em; }
+.close h2 { margin-top: var(--sc-5); font-size: clamp(2.3rem, 1rem + 5vw, 6rem); line-height: .98; letter-spacing: -.03em; }
+.close .sc-body { margin-top: var(--sc-5); }
+.close .cta { margin-top: var(--sc-7); font-size: 1.02rem; padding: 1rem 1.9rem; }
+.close__logo {
+  position: absolute; right: clamp(-4rem, 2vw, 4rem); top: 50%; width: min(46rem, 62vw); translate: 0 -54%;
+  mix-blend-mode: screen; opacity: .95; z-index: 1; pointer-events: none;
+}
+.close__logo img { width: 100%; height: auto; }
+.foot {
+  position: absolute; inset: auto var(--sc-gutter) 1.25rem var(--sc-gutter); z-index: 5;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 2rem;
+  padding-top: 1rem; border-top: 1px solid var(--sc-hairline);
+  font-size: var(--sc-t-xs); color: var(--sc-ink-soft);
+}
+.foot a { color: var(--sc-ink); }
+
+/* ---------- 8pt scale + legibility ---------- */
+:root { --sc-1: .5rem; --sc-2: .5rem; --sc-3: 1rem; --sc-4: 1rem; --sc-5: 1.5rem; --sc-6: 2rem; --sc-7: 3rem; --sc-8: 4rem; --sc-9: 5rem; --sc-10: 6rem; --sc-11: 8rem; --gap: 4rem; }
+@media (min-width: 1024px) { :root { --gap: 6rem; } }
+.sc-label { display: flex; width: fit-content; align-items: center; gap: .75rem; font-family: var(--sc-font-display); font-stretch: 118%; font-size: clamp(1.15rem, 1rem + .7vw, 1.7rem); font-weight: 700; letter-spacing: .12em; }
+.sc-label::before { content: ""; width: 2.5rem; height: 4px; background: var(--beam); flex: none; }
+.chapter .sc-label { margin-bottom: var(--sc-4); }
+.chapter { padding-block: var(--gap); }
+.chapter--tight { padding-block-start: var(--gap); }
+.chapter--pre { padding-bottom: 2rem; }
+.quad { margin-top: var(--sc-7); }
+.marq { margin-top: var(--sc-7); }
+.marq-label { margin-top: var(--sc-7); }
+.flow-list p { font-size: var(--sc-t-lg); font-weight: 600; color: var(--sc-accent); max-width: 26ch; line-height: 1.25; letter-spacing: -.01em; }
+.panel--img { border-top: 0; padding-top: 0; }
+.panel--img::before { display: none; }
+.panel__img { display: block; width: 100%; height: clamp(11rem, 44svh, 28rem); object-fit: cover; border-radius: 2px; margin-bottom: var(--sc-5); background: var(--sc-surface); }
+.pan:not(.why) .panel { width: clamp(15rem, 23vw, 22rem); }
+.pan:not(.why) .rail { padding-top: clamp(5.5rem, 12vh, 7rem); }
+
+/* why: one panel per scroll gesture, video band laid out beneath the rail */
+.why [data-sc-stage] { display: flex; flex-direction: column; }
+.why .rail { display: flex; flex: none; height: auto; margin-bottom: 1.25rem; will-change: transform; transition: transform 620ms var(--sc-ease-out), height 460ms var(--sc-ease-out); }
+.why .rail > * { transition: opacity 420ms var(--sc-ease-out); }
+.why .rail > .is-active { transition-delay: 160ms; }
+.why .rail > :not(.is-active) { opacity: 0; }   /* one panel at a time: no half-cut neighbour titles */
+.why__media { position: relative; z-index: 1; flex: 1 1 auto; min-height: 4rem; margin: 0 var(--sc-gutter) 8.5rem; overflow: hidden; border-radius: 4px; background: #05070c; box-shadow: var(--sc-e2); }
+.why .spec__dot { translate: calc(var(--why-k, 0) * (100cqw - 11px)) 0; transition: translate 620ms var(--sc-ease-out); }
+.why .sc-stage::after { display: none; }
+.why[data-i="0"] .wv0, .why[data-i="1"] .wv1, .why[data-i="2"] .wv2, .why[data-i="3"] .wv3, .why[data-i="4"] .wv4, .why[data-i="5"] .wv5 { opacity: 1; }
+.why__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(5 7 12 / .35), transparent 30%, transparent 70%, rgb(5 7 12 / .35)); pointer-events: none; }
+.why .hint { bottom: 5.4rem; opacity: calc((1 - var(--why-k, 0)) * 99); }
+.why .rail { padding-top: clamp(5.5rem, 12vh, 8rem); }
+@media (prefers-reduced-motion: reduce) { .why .rail, .why .spec__dot, .why .rail > *, .why .rail > .is-active { transition: none; } }
+@media (max-height: 800px) and (min-width: 861px) {
+  .eco__wrap { padding-top: 5rem; }
+}
+@media (max-height: 820px) and (min-width: 861px) {
+  .pipe__copy .sc-body { display: none; }
+  .pipe__copy h2 { font-size: clamp(1.8rem, 1rem + 2vw, 3rem); }
+  .pl li { padding: .45rem 0; }
+}
+@media (max-height: 680px) and (min-width: 861px) {
+  .pipe__grid { padding-top: 5rem; padding-bottom: 3.5rem; }
+  .pl h3 { font-size: 1.05rem; }
+  .phases { margin-top: .6rem; } .pl { margin-top: .6rem; }
+  .pipe__copy .sc-label { font-size: 1rem; }
+  .pipe__copy h2 { font-size: clamp(1.6rem, 1rem + 1.6vw, 2.4rem); }
+}
+
+
+/* ---------- phones ---------- */
+@media (max-width: 860px) {
+  .hero__a { left: 50%; top: 33%; width: min(94vw, 46svh * 1.155); }
+  .hero .sc-copy { bottom: clamp(2rem, 6vh, 4rem); }
+  .hero h1 { font-size: clamp(2.1rem, 9.4vw, 3.6rem); }
+  .hero .sc-body { font-size: var(--sc-t-sm); }
+  .plane--haze { background: radial-gradient(60% 34% at 50% 34%, rgb(61 139 255 / .22), transparent 70%); }
+  .plane--grid { inset: 52% -60% -30%; }
+  .offset { margin-left: 0; }
+  .belief__grid { grid-template-columns: 1fr; gap: 1rem; }
+  .belief__img { aspect-ratio: 4 / 3; }
+  .fr__head { top: 5rem; }
+  .fr__head h2 { font-size: clamp(2.2rem, 10vw, 3.4rem); }
+  .fr__lines { font-size: clamp(1.7rem, 8.4vw, 2.4rem); bottom: 6.5rem; height: 3.4em; max-width: 100%; }
+  .frontier .hint--steps { bottom: 1.5rem; }
+  .eco__wrap { padding-top: 5rem; padding-bottom: 4.4rem; gap: 1rem; }
+  .eco__head h2 { font-size: 1.9rem; }
+  .eco__lead { min-height: 4.2em; font-size: 1.05rem; }
+  .mosaic { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr 1fr 1fr; gap: .5rem; transition: grid-template-rows 700ms var(--sc-ease-in-out); }
+  .eco[data-i="0"] .mosaic { grid-template-columns: 1fr; grid-template-rows: 2.8fr 1fr 1fr 1fr; }
+  .eco[data-i="1"] .mosaic { grid-template-columns: 1fr; grid-template-rows: 1fr 2.8fr 1fr 1fr; }
+  .eco[data-i="2"] .mosaic { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr 2.8fr 1fr; }
+  .eco[data-i="3"] .mosaic { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr 1fr 2.8fr; }
+  .mo { min-height: 0; }
+  .mo__cap { padding: 1.5rem .9rem .7rem; }
+  .dist__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .flow-list .tick { flex-direction: column; gap: .4rem; }
+  .flow-list p { text-align: left; max-width: 40ch; }
+  .peak__grid { grid-template-columns: 1fr; align-content: center; gap: var(--sc-5); padding-top: 5.2rem; padding-bottom: 4.6rem; }
+  .word { font-size: clamp(2rem, 14cqw, 4rem); }
+  .phil li { grid-template-columns: 1fr; gap: .5rem; padding: 1rem 0; }
+  .rail__lead { width: 82vw; }
+  /* why: every item is one frame wide; titles sized so the widest ("Commercial", ~7x its font size) fits */
+  .why .rail { padding-top: 5.5rem; }
+  .why .rail__lead, .why .panel { width: 84vw; min-width: 0; margin-right: 0; padding-top: 0; }
+  .why .rail__lead h2 { font-size: 1.9rem; margin-top: 1rem; }
+  .why .rail__lead .sc-body { font-size: 1.05rem; }
+  .why .panel h3 { font-size: min(4.4rem, 11vw); line-height: 1; }
+  .why .panel p { font-size: 1.15rem; line-height: 1.35; color: #e8edf6; margin-top: .6rem; max-width: none; }
+  .why__media { flex: 1 1 auto; margin-bottom: 7rem; }
+  .pan:not(.why) .panel { width: 84vw; }
+  .rail__logo { width: 70vw; }
+  .rail__end { width: 82vw; }
+  .rail__arrow { width: 4rem; margin-top: var(--sc-7); }
+  .hint { right: var(--sc-gutter); bottom: 4.6rem; font-size: .85rem; gap: .6rem; }
+  .steps i { width: 1.4rem; }
+  .pan:not(.why) .panel { width: 68vw; }
+  .why .hint { bottom: 4.6rem; }
+  .pipe__grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(5rem, 1fr) auto; gap: 1rem; align-items: stretch; padding-top: 4.75rem; padding-bottom: 3.75rem; }
+  .pframe { order: -1; aspect-ratio: auto; height: auto; min-height: 0; box-shadow: var(--sc-e3), 0 0 0 2px var(--sc-accent); }
+  .pipe .hint--steps { bottom: .9rem; }
+  .pipe__copy .sc-body { display: none; }
+  .pipe__copy h2 { font-size: 1.7rem; }
+  .pipe__copy .sc-label { font-size: .85rem; letter-spacing: .1em; margin-bottom: .4rem; }
+  .pipe__copy .sc-label::before { width: 1.6rem; }
+  .phases { margin-top: .6rem; gap: .35rem; } .phases span { padding: .35rem .65rem; font-size: .68rem; }
+  .pl { margin-top: .6rem; } .pl li { padding: .4rem 0; } .pl h3 { font-size: 1.05rem; } .pl p { font-size: .9rem; padding-top: .2rem; }
+  .flow-list p { font-size: var(--sc-t-base); }
+  .vtag { top: 4.75rem; }
+  .quad { grid-template-columns: 1fr; }
+  .quad > div:nth-child(even) { padding-left: 0; border-left: 0; }
+  .quad > div:nth-child(even)::before { left: 0; }
+  .close__logo { top: 5rem; left: 50%; right: auto; width: 74vw; aspect-ratio: 1 / .64; overflow: hidden; translate: -50% 0; opacity: .9; mix-blend-mode: normal; will-change: transform; transform: translateZ(0); }
+  .close__inner, .foot { will-change: transform; }
+  .close__logo img { margin-top: -12%; }
+  .close__inner { bottom: 8.5rem; }
+  .close h2 { font-size: clamp(2rem, 9vw, 3.4rem); }
+  .brand__word { font-size: .72rem; letter-spacing: .1em; }
+  .brand__mark { width: 28px; }
+}
+@media (max-width: 860px) and (max-height: 700px) {
+  .pipe__grid { padding-top: 4.5rem; gap: .75rem; }
+  .pipe__copy h2 { font-size: 1.45rem; }
+  .pl li { padding: .3rem 0; } .pl h3 { font-size: .98rem; }
+  .phases span { padding: .3rem .5rem; font-size: .62rem; letter-spacing: .06em; }
+}
+@media (max-width: 360px) {
+  .pipe__copy .sc-label { font-size: .75rem; letter-spacing: .05em; }
+}
+/* the shortest phones: the list itself shows the active step, so the phase chips give way */
+@media (max-width: 860px) and (max-height: 600px) {
+  .phases { display: none; }
+  .pipe__grid { grid-template-rows: minmax(4.5rem, 1fr) auto; padding-top: 4.4rem; }
+  .pl li { padding: .25rem 0; }
+}
+/* the smallest phones: stack the wordmark like the logo lockup so the header button keeps its gutter */
+@media (max-width: 360px) {
+  .brand__word { line-height: 1.2; }
+  .brand__sub { display: block; font-size: .8em; letter-spacing: .44em; margin-top: 1px; color: #a9bddc; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__a { scale: 1; }
+  .hero__flare { display: none; }
+  .a-silver, .a-blue, .a-bloom { animation: none; stroke-dashoffset: 0; }
+  .a-fill-l, .a-fill-r, .a-fill-c { animation: none; opacity: 1; }
+  .marq__t { animation: none; }
+  .hint > svg, .hint .steps, .hint svg, .rail__arrow { animation: none; }
+  .tick::before { transform: scaleX(.08); }
+}
+</style>
+</head>
+<body>
+
+<div class="sc-grain" aria-hidden="true"></div>
+
+<header class="bar">
+  <a class="brand" href="#top" aria-label="Agency AI Studios, back to top">
+    <svg class="brand__mark" viewBox="180 190 670 580" aria-hidden="true">
+      <path class="mk-fill" d="M473 212L513 258L296 740H205ZM553 212L513 258L740 740H825Z"/>
+      <path class="mk-edge" pathLength="1" style="stroke-dasharray:none" d="M473 212L205 740M553 212L825 740"/>
+      <path class="mk-dim" d="M513 258L296 740M513 258L740 740"/>
+      <path class="mk-live" pathLength="1" d="M296 740L513 258L740 740"/>
+    </svg>
+    <span class="brand__word">AGENCY <em>AI</em> <span class="brand__sub">STUDIOS</span></span>
+  </a>
+  <a class="cta cta--sm" href="#start">Start a project</a>
+</header>
+
+<main id="top">
+
+  <!-- 1 · AWE: the camera pushes through the A -->
+  <section class="hero g" data-sc-act="pin" data-sc-span="2.3">
+    <div data-sc-stage>
+      <div class="plane plane--haze" data-sc-parallax="-1.6"></div>
+      <div class="plane plane--grid" data-sc-parallax="-0.8"></div>
+
+      <div class="hero__a" aria-hidden="true">
+        <div class="hero__tilt" data-sc-tilt="4">
+          <svg viewBox="180 190 670 580">
+            <defs>
+              <linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a606c"/><stop offset=".35" stop-color="#252932"/><stop offset="1" stop-color="#0b0e14"/></linearGradient>
+              <linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a505b"/><stop offset=".4" stop-color="#1d2028"/><stop offset="1" stop-color="#090b10"/></linearGradient>
+              <linearGradient id="gc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c3c9d4"/><stop offset="1" stop-color="#454b57"/></linearGradient>
+            </defs>
+            <path class="a-fill-l" d="M473 212L513 258L296 740H205Z"/>
+            <path class="a-fill-r" d="M553 212L513 258L740 740H825Z"/>
+            <path class="a-fill-c" d="M473 212H553L513 258Z"/>
+            <path class="a-silver" pathLength="1" d="M513 258L473 212L205 740H296"/>
+            <path class="a-silver" pathLength="1" d="M513 258L553 212L825 740H740"/>
+            <path class="a-bloom" pathLength="1" d="M296 740L513 258L740 740"/>
+            <path class="a-blue" pathLength="1" d="M296 740L513 258L740 740"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero__flare" aria-hidden="true"></div>
+      <div class="plane plane--front" data-sc-parallax="1.4" aria-hidden="true">
+        <span class="streak streak--1"></span><span class="streak streak--2"></span>
+      </div>
+      <div class="sc-scrim sc-scrim--lead" aria-hidden="true"></div>
+
+      <div class="sc-copy sc-copy--lead" data-sc-cue="0 0.5 0">
+        <span class="sc-label hero__name">Agency AI Studios</span>
+        <h1 data-sc-kinetic="lines">Human Creativity.<br><span class="blue">AI-Amplified.</span></h1>
+        <p class="sc-body">A production studio built for the AI era. Story first, craft always, AI in service of both.</p>
+        <a class="cta" href="#start">Start a project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · TENSION: the frontier, one line at a time over full-bleed film -->
+  <section class="frontier g" id="frontier" data-sc-act="pin" data-sc-span="4.8" data-steps="4">
+    <div data-sc-stage>
+      <div class="fr__media" aria-hidden="true">
+        <video class="fv0" data-loop muted loop playsinline preload="none" poster="assets/front-0.jpg" src="assets/front-0.mp4"></video>
+        <video class="fv1" data-loop muted loop playsinline preload="none" poster="assets/front-1.jpg" src="assets/front-1.mp4"></video>
+        <video class="fv2" data-loop muted loop playsinline preload="none" poster="assets/front-2.jpg" src="assets/front-2.mp4"></video>
+        <video class="fv3" data-loop muted loop playsinline preload="none" poster="assets/front-3.jpg" src="assets/front-3.mp4"></video>
+      </div>
+      <div class="sc-scrim sc-scrim--band" aria-hidden="true"></div>
+      <div class="fr__head">
+        <span class="sc-label">The new frontier</span>
+        <h2>The new production frontier.</h2>
+      </div>
+      <div class="fr__lines">
+        <p class="fl fl0">Stories are <b>imagined</b> differently now.</p>
+        <p class="fl fl1">They are <b>produced</b> differently.</p>
+        <p class="fl fl2">They reach audiences <b>differently.</b></p>
+        <p class="fl fl3">The studios that thrive keep their <b>creative soul.</b></p>
+      </div>
+      <div class="hint hint--steps" aria-hidden="true"><span class="steps"><i></i><i></i><i></i><i></i></span>Keep scrolling <svg viewBox="0 0 14 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M7 1v15M1 10l6 6 6-6"/></svg></div>
+    </div>
+  </section>
+
+  <section class="chapter g g-light" id="combine" data-sc-act="flow">
+    <div class="sc-wrap">
+      <div class="sc-stack" data-sc-in data-sc-stagger="80">
+        <span class="sc-label">What we combine</span>
+        <h2>Human creativity. Production expertise. AI at every stage.</h2>
+        <p class="sc-body">Working in concert, from first idea to final delivery.</p>
+      </div>
+      <ul class="flow-list" data-sc-stagger="70" data-sc-in>
+        <li class="tick"><h3>Hybrid AI production</h3><p>The right mix for each story</p></li>
+        <li class="tick"><h3>Real-actor performance capture</h3><p>People on stage, translated to screen</p></li>
+        <li class="tick"><h3>Virtual production environments</h3><p>Worlds built in camera and in engine</p></li>
+        <li class="tick"><h3>Generative media at scale</h3><p>Image, video and audio without limits of crew size</p></li>
+        <li class="tick"><h3>Fully AI-native content creation</h3><p>Formats made for an AI-enabled world</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3 · PEAK: four words -->
+  <section class="peak chapter g" id="philosophy" data-sc-act="flow">
+    <div class="sc-wrap">
+      <div class="sc-stack" data-sc-in data-sc-stagger="80">
+        <span class="sc-label">Our philosophy</span>
+        <h2>A four-part production philosophy.</h2>
+        <p class="sc-body">A complete creative and commercial framework from first idea to full market potential.</p>
+      </div>
+      <ol class="phil" data-sc-in data-sc-stagger="120">
+        <li><span class="word">Design.</span><p>Story, concept, characters, worlds, and creative strategy. The foundation every great production is built upon.</p></li>
+        <li><span class="word">Create.</span><p>Cinematic production using the right combination of human talent and AI tools, matched precisely to each project's vision.</p></li>
+        <li><span class="word">Scale.</span><p>Extend ideas across film, television, social, digital, advertising, and emerging platforms without sacrificing quality or coherence.</p></li>
+        <li><span class="word">Monetize.</span><p>Brands, licensing, distribution, sponsorships, commerce, and IP. Turning creative work into lasting commercial value.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 4 · CONVICTION: the human part -->
+  <section class="chapter belief chapter--pre g g-light" data-sc-act="flow">
+    <div class="sc-wrap">
+      <span class="sc-label" data-sc-in>Core belief</span>
+      <h2 data-sc-in data-sc-stagger="140">
+        <span>Human Creativity.</span>
+        <span class="amp">AI-Amplified.</span>
+      </h2>
+      <figure class="belief__img" data-sc-in>
+        <video data-auto muted loop playsinline preload="metadata" poster="assets/belief.jpg" src="assets/belief.mp4" aria-label="An empty white cyclorama sound stage under studio lights"></video>
+      </figure>
+      <div class="belief__grid" data-sc-in data-sc-stagger="80">
+        <p class="sc-lede">Technology doesn't replace creativity. It expands what creative teams can imagine and execute.</p>
+        <p class="sc-body">The most powerful productions of the next decade won't be made by AI alone. They'll be made by people who know how to use it.</p>
+      </div>
+      <ul class="human" data-sc-in data-sc-stagger="110">
+        <li>Behind every prompt is <b>a person.</b></li>
+        <li>Behind every frame is <b>a creative decision.</b></li>
+        <li>Behind every story is <b>a human truth worth telling.</b></li>
+      </ul>
+      <p class="belief__sign" data-sc-in>Story first. Craft always. AI in service of both.</p>
+    </div>
+  </section>
+
+  <!-- 5 · RANGE: the methodology spectrum -->
+  <section class="pan g" id="method" data-sc-act="pan" data-sc-span="5">
+    <div data-sc-stage>
+      <div class="rail" data-sc-pan="0.04">
+        <div class="rail__lead sc-stack">
+          <span class="sc-label">Production methodology</span>
+          <h2>Hybrid AI production.</h2>
+          <p class="sc-body">We select the right methodology for each story, never forcing every project into a single workflow. The result is content that feels right, not just technically impressive.</p>
+          <img class="rail__logo" src="assets/logo.webp" alt="" width="1024" height="1024" loading="lazy" decoding="async">
+        </div>
+        <article class="panel panel--img"><img class="panel__img" src="assets/method-0.jpg" alt="AI-generated cloud of blue light resolving into a mountain landscape" width="900" height="1125" loading="lazy" decoding="async"><h3>Generative Media</h3><p>Image, video and audio synthesis at a scale a crew alone cannot reach.</p></article>
+        <article class="panel panel--img"><img class="panel__img" src="assets/method-1.jpg" alt="Virtual production stage with curved LED walls showing an alien city" width="900" height="1125" loading="lazy" decoding="async"><h3>AI &amp; Virtual</h3><p>AI-built worlds and virtual environments, shaped by human direction.</p></article>
+        <article class="panel panel--img"><img class="panel__img" src="assets/method-2.jpg" alt="Starship shown half as wireframe model and half as final render" width="900" height="1125" loading="lazy" decoding="async"><h3>VFX</h3><p>Traditional craft and AI tools, graded into a single image.</p></article>
+        <article class="panel panel--img"><img class="panel__img" src="assets/method-3.jpg" alt="Actor in a motion capture suit with a digital skeleton overlay" width="900" height="1125" loading="lazy" decoding="async"><h3>Performance Capture</h3><p>Human performance translated into digital characters.</p></article>
+        <article class="panel panel--img"><img class="panel__img" src="assets/method-4.jpg" alt="Close-up of an actor on a live-action film set" width="900" height="1125" loading="lazy" decoding="async"><h3>Real Actors</h3><p>Live action on our stages, where nothing replaces a person in the room.</p></article>
+        <div class="rail__end"><p>Every stage is informed by creative intent. Every tool is chosen in service of the story.</p><svg class="rail__arrow" viewBox="0 0 48 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M24 4v52M6 40l18 18 18-18"/></svg></div>
+      </div>
+      <div class="spec" aria-hidden="true">
+        <div class="spec__bar"><span class="spec__dot"></span></div>
+        <div class="spec__ends"><span>Fully AI-native</span><span>Fully human</span></div>
+      </div>
+      <div class="hint" aria-hidden="true">Keep scrolling <svg viewBox="0 0 14 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M7 1v15M1 10l6 6 6-6"/></svg></div>
+    </div>
+  </section>
+
+  <!-- 6 · EXPANSION: one idea, many possibilities -->
+  <section class="eco g g-blue" id="create" data-sc-act="pin" data-sc-span="6" data-steps="4">
+    <div data-sc-stage>
+      <div class="eco__wrap">
+        <div class="eco__head">
+          <div>
+            <span class="sc-label">What we create</span>
+            <h2>One idea. Many possibilities.</h2>
+          </div>
+        </div>
+        <ul class="mosaic">
+        <li class="mo mo0"><video data-loop muted loop playsinline preload="none" poster="assets/create-0.jpg" src="assets/create-0.mp4"></video><div class="mo__cap"><h3>Entertainment</h3></div></li>
+        <li class="mo mo1"><video data-loop muted loop playsinline preload="none" poster="assets/create-1.jpg" src="assets/create-1.mp4"></video><div class="mo__cap"><h3>Branded Content</h3></div></li>
+        <li class="mo mo2"><video data-loop muted loop playsinline preload="none" poster="assets/create-2.jpg" src="assets/create-2.mp4"></video><div class="mo__cap"><h3>Digital &amp; Social</h3></div></li>
+        <li class="mo mo3"><video data-loop muted loop playsinline preload="none" poster="assets/create-3.jpg" src="assets/create-3.mp4"></video><div class="mo__cap"><h3>AI-Native Experiences</h3></div></li>
+        </ul>
+        <div class="eco__lead">
+          <p class="ed ed0"><b>Entertainment.</b> Film, television, series, music videos, and original IP for global audiences.</p>
+          <p class="ed ed1"><b>Branded Content.</b> Commercials, campaigns, product films, and branded entertainment.</p>
+          <p class="ed ed2"><b>Digital &amp; Social.</b> Short-form, serialized, platform-native. Built to perform.</p>
+          <p class="ed ed3"><b>AI-Native Experiences.</b> New formats, made for an AI-enabled world.</p>
+          </div>
+      </div>
+      <div class="hint hint--steps" aria-hidden="true"><span class="steps"><i></i><i></i><i></i><i></i></span>Keep scrolling <svg viewBox="0 0 14 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M7 1v15M1 10l6 6 6-6"/></svg></div>
+    </div>
+  </section>
+
+  <!-- 8 · TURN: the moat, shown as a VFX before / after -->
+  <section class="moat g" data-sc-act="scrub" data-sc-span="3.2" data-sc-dwell="0.2" data-steps="2">
+    <div data-sc-stage>
+      <img class="sc-stage__poster" src="assets/vfx-poster.jpg" alt="Two actors on a white cyclorama sound stage" width="1280" height="720">
+      <video data-sc-scrub data-sc-src="assets/vfx.mp4" data-sc-src-mobile="assets/vfx-m.mp4" muted playsinline></video>
+      <div class="vtag" aria-hidden="true"><span class="t0">Before: white cyc stage</span><span class="t1">After: finished scene</span></div>
+      <div class="sc-scrim sc-scrim--band" aria-hidden="true"></div>
+      <div class="moat__copy">
+        <p class="m0" data-sc-cue="0 0.30 0">Owning the stack is a structural advantage.</p>
+        <p class="m1" data-sc-cue="0.24 0.62">We control the full stack, from live-action capture to AI generation, post-production, and delivery.</p>
+        <p class="m2" data-sc-cue="0.56 1">While others outsource studio time and AI tooling separately, we integrate both under one roof, end to end.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · SUBSTANCE: the production pipeline -->
+  <section class="pipe g g-light" id="pipeline" data-sc-act="pin" data-sc-span="4.6" data-steps="5">
+    <div data-sc-stage>
+      <div class="pipe__grid">
+        <div class="pipe__copy">
+          <span class="sc-label">Infrastructure advantage</span>
+          <h2>Built for hybrid AI production.</h2>
+          <p class="sc-body">Physical production stages and AI-powered pipelines operate side by side, so live-action capture and generation happen in one place.</p>
+          <div class="phases" aria-hidden="true"><span class="ph0">Pre-production</span><span class="ph1">Production</span><span class="ph2">Post-production</span></div>
+          <ul class="pl">
+            <li><h3>AI generation suite</h3><p>On-site tooling for image, video, and audio synthesis.</p></li>
+            <li><h3>Physical production stages</h3><p>Main stage and insert stage for live-action capture.</p></li>
+            <li><h3>Multi-camera livestream</h3><p>Real-time hybrid broadcast capability.</p></li>
+            <li><h3>Podcast &amp; audio studios</h3><p>Professional control room with multi-track recording.</p></li>
+            <li><h3>Post-production pipeline</h3><p>AI-assisted editing, VFX, color, and delivery at scale.</p></li>
+          </ul>
+        </div>
+        <div class="pframe" aria-hidden="true">
+          <video class="pv0" data-loop muted loop playsinline preload="none" poster="assets/pipe-0.jpg" src="assets/pipe-0.mp4"></video>
+          <video class="pv1" data-loop muted loop playsinline preload="none" poster="assets/pipe-1.jpg" src="assets/pipe-1.mp4"></video>
+          <video class="pv2" data-loop muted loop playsinline preload="none" poster="assets/pipe-2.jpg" src="assets/pipe-2.mp4"></video>
+          <video class="pv3" data-loop muted loop playsinline preload="none" poster="assets/pipe-3.jpg" src="assets/pipe-3.mp4"></video>
+          <video class="pv4" data-loop muted loop playsinline preload="none" poster="assets/pipe-4.jpg" src="assets/pipe-4.mp4"></video>
+        </div>
+      </div>
+      <div class="hint hint--steps" aria-hidden="true"><span class="steps"><i></i><i></i><i></i><i></i></span>Keep scrolling <svg viewBox="0 0 14 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M7 1v15M1 10l6 6 6-6"/></svg></div>
+    </div>
+  </section>
+
+  <!-- 8b · REACH: distribution -->
+  <section class="dist chapter g" id="distribution" data-sc-act="flow">
+    <div class="sc-wrap">
+      <div class="dist__grid">
+        <div class="sc-stack" data-sc-in data-sc-stagger="80">
+          <span class="sc-label">Distribution</span>
+          <h2>Made here. Seen everywhere.</h2>
+          <p class="sc-lede">We don't stop at the final cut. Agency AI Studios works with a wide network of media outlets and streaming services to put your project in front of the right audience.</p>
+        </div>
+        <ul class="dist__steps" data-sc-in data-sc-stagger="90">
+          <li class="tick"><h3>Placement</h3><p>The platform and partner that fit the project.</p></li>
+          <li class="tick"><h3>Packaging</h3><p>Deliverables, formats and specs for each outlet.</p></li>
+          <li class="tick"><h3>Launch</h3><p>Timing, campaigns and cut-downs that travel.</p></li>
+        </ul>
+      </div>
+    </div>
+    <div class="marq marq--dist" data-sc-in aria-label="Outlets and platforms we work with, including Netflix, Paramount+, Tubi and more">
+      <div class="marq__t" aria-hidden="true">
+        <ul><li>Netflix</li><li>Paramount+</li><li>Tubi</li><li>Streaming</li><li>Broadcast</li><li>Theatrical</li><li>Social platforms</li><li>And more</li></ul>
+        <ul><li>Netflix</li><li>Paramount+</li><li>Tubi</li><li>Streaming</li><li>Broadcast</li><li>Theatrical</li><li>Social platforms</li><li>And more</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · PARTNERS -->
+  <section class="chapter chapter--pre g g-blue" data-sc-act="flow">
+    <div class="sc-wrap">
+      <div class="sc-stack" data-sc-in data-sc-stagger="80">
+        <span class="sc-label">Partnership</span>
+        <h2>Who we work with.</h2>
+        <p class="sc-body">Built to serve partners who demand the highest standard of creative ambition, production quality, and commercial impact.</p>
+      </div>
+      <div class="quad" data-sc-in data-sc-stagger="90">
+        <div><h3>Brands</h3><p>More content. Greater creative possibilities. Faster production cycles. We help brands compete in an attention economy by creating work that actually earns it.</p></div>
+        <div><h3>Studios &amp; Platforms</h3><p>New worlds, new formats, and new production models. We bring the tools and talent to develop IP that travels across screens and borders.</p></div>
+        <div><h3>Creators &amp; Talent</h3><p>We help creators and personal brands transform their ideas into scalable content businesses, with production values to match their ambition.</p></div>
+        <div><h3>Technology Companies</h3><p>We turn AI technology into real-world creative experiences, making the abstract tangible and the experimental commercially compelling.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · DIFFERENTIATION -->
+  <section class="pan why g" data-stepper data-sc-act="pin" data-sc-span="4.6">
+    <div data-sc-stage>
+      <div class="rail">
+        <div class="rail__lead sc-stack">
+          <span class="sc-label">Differentiation</span>
+          <h2>Why Agency AI Studios.</h2>
+          <p class="sc-body">Six distinctions that set us apart from every other production company, AI agency, or creative studio operating today.</p>
+        </div>
+        <article class="panel"><h3>Creative</h3><p>Experienced storytellers and production professionals at every level of the process.</p></article>
+        <article class="panel"><h3><span class="ol">AI</span>-First</h3><p>AI integrated throughout the production workflow. Built in from day one, not bolted on.</p></article>
+        <article class="panel"><h3>Cinematic</h3><p>Technology deployed without ever compromising craft, quality, or visual ambition.</p></article>
+        <article class="panel"><h3>Scalable</h3><p>One idea becomes an entire content ecosystem across formats, platforms, and markets.</p></article>
+        <article class="panel"><h3>Commercial</h3><p>Built around production, IP development, partnerships, and long-term monetization.</p></article>
+        <article class="panel"><h3>Distribution</h3><p>We work with media outlets and streaming services to get your project to the right audience.</p></article>
+      </div>
+      <div class="why__media" aria-hidden="true">
+        <video class="wv0" data-loop muted loop playsinline preload="none" poster="assets/why-0.jpg" src="assets/why-0.mp4"></video>
+        <video class="wv1" data-loop muted loop playsinline preload="none" poster="assets/why-1.jpg" src="assets/why-1.mp4"></video>
+        <video class="wv2" data-loop muted loop playsinline preload="none" poster="assets/why-2.jpg" src="assets/why-2.mp4"></video>
+        <video class="wv3" data-loop muted loop playsinline preload="none" poster="assets/why-3.jpg" src="assets/why-3.mp4"></video>
+        <video class="wv4" data-loop muted loop playsinline preload="none" poster="assets/why-4.jpg" src="assets/why-4.mp4"></video>
+        <video class="wv5" data-loop muted loop playsinline preload="none" poster="assets/why-5.jpg" src="assets/why-5.mp4"></video>
+      </div>
+      <div class="spec" aria-hidden="true">
+        <div class="spec__bar"><span class="spec__dot"></span></div>
+        <div class="spec__ends"><span>Creative</span><span>Distribution</span></div>
+      </div>
+      <div class="hint" aria-hidden="true">Keep scrolling <svg viewBox="0 0 14 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M7 1v15M1 10l6 6 6-6"/></svg></div>
+    </div>
+  </section>
+
+  <!-- 11 · IDENTITY -->
+  <section class="chapter team g g-light" data-sc-act="flow">
+    <div class="sc-wrap">
+      <div class="sc-stack" data-sc-in data-sc-stagger="90">
+        <span class="sc-label">The team</span>
+        <h2><span>We are not a software company.</span><span>We are not a generic AI agency.</span><span>We are a production studio, built for the AI era.</span></h2>
+        <p class="team__line">Human creativity is our foundation. AI is our accelerator.</p>
+      </div>
+      <p class="sc-label marq-label" data-sc-in>Our network</p>
+    </div>
+    <div class="marq" data-sc-in aria-label="Our network: filmmakers, producers, designers, artists, AI specialists, technologists, editors, creators">
+      <div class="marq__t" aria-hidden="true">
+        <ul><li>Filmmakers</li><li>Producers</li><li>Designers</li><li>Artists</li><li>AI Specialists</li><li>Technologists</li><li>Editors</li><li>Creators</li></ul>
+        <ul><li>Filmmakers</li><li>Producers</li><li>Designers</li><li>Artists</li><li>AI Specialists</li><li>Technologists</li><li>Editors</li><li>Creators</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · RESOLVE: the logo, whole -->
+  <section class="close g" id="start" data-sc-act="pin" data-sc-span="1.8">
+    <div data-sc-stage data-sc-spotlight>
+      <div class="close__logo" aria-hidden="true" data-sc-parallax="-0.8" data-sc-cue="0 1 0 0" data-sc-rise="0"><img src="assets/logo.webp" alt="" width="1024" height="1024" loading="lazy"></div>
+      <div class="close__inner">
+        <p class="close__q" data-sc-cue="0.01" data-sc-rise="24">The question was never how to produce more content.</p>
+        <h2 data-sc-cue="0.04" data-sc-rise="30" data-sc-kinetic="lines">We create better stories, and take them further.</h2>
+        <p class="sc-body" data-sc-cue="0.09" data-sc-rise="24">Agency AI Studios brings together the people, the technology, and the production expertise to do exactly that, every single time.</p>
+        <a class="cta" href="mailto:hello@agencyaistudios.com" data-sc-magnet="0.26" data-sc-cue="0.12" data-sc-rise="0">Start a project</a>
+      </div>
+      <footer class="foot">
+        <span>Agency AI Studios &middot; AI-first production studio</span>
+        <span>Design. Create. Scale. Monetize.</span>
+        <a href="mailto:hello@agencyaistudios.com">hello@agencyaistudios.com</a>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<script src="scrollcraft.js"></script>
+<script>
+var phoneMQ = matchMedia('(max-width: 859px)');
+phoneMQ.addEventListener('change', function () { location.reload(); });
+if (phoneMQ.matches) {
+  document.querySelector('.eco').dataset.scSpan = '3.8';
+  document.querySelector('.close__logo').removeAttribute('data-sc-parallax');
+}
+ScrollCraft.mount(document.body);
+
+// Flow-section clips play only while on screen.
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (x) { var v = x.target; if (x.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); });
+  }, { rootMargin: '20% 0px' });
+  document.querySelectorAll('video[data-auto]').forEach(function (v) { io.observe(v); });
+})();
+
+// Touch devices: the sideways rails come to rest on a panel instead of between two.
+(function () {
+  if (!matchMedia('(pointer: coarse)').matches) return;
+  var rails = [].slice.call(document.querySelectorAll('.pan')), t, busy = false;
+  addEventListener('scroll', function () { if (busy) return; clearTimeout(t); t = setTimeout(snap, 160); }, { passive: true });
+  function snap() {
+    rails.forEach(function (sec) {
+      if (sec.hasAttribute('data-stepper')) return;
+      var top = sec.getBoundingClientRect().top + scrollY, travel = sec.offsetHeight - innerHeight;
+      if (scrollY < top - 2 || scrollY > top + travel + 2) return;
+      var rail = sec.querySelector('.rail'), p = parseFloat(sec.style.getPropertyValue('--sc-p')) || 0;
+      var m = /translate3d\((-?[\d.]+)px/.exec(rail.style.transform), x = m ? -parseFloat(m[1]) : 0;
+      var F = p > 0.03 ? x / p : rail.scrollWidth - innerWidth;
+      if (!(F > 0)) return;
+      var best = null, bd = 1e9;
+      [].forEach.call(rail.children, function (k) {
+        var cx = k.offsetLeft + k.offsetWidth / 2 - innerWidth / 2;
+        var y = top + Math.max(0, Math.min(1, cx / F)) * travel, d = Math.abs(y - scrollY);
+        if (d < bd) { bd = d; best = y; }
+      });
+      if (best !== null && bd > 6) {
+        busy = true; window.scrollTo({ top: Math.round(best), behavior: 'smooth' });
+        setTimeout(function () { busy = false; }, 700);
+      }
+    });
+  }
+})();
+
+// Differentiation: every scroll gesture moves exactly one panel and holds it, on every device.
+// Inside the pinned range the page position is always parked on a stop, so a hard flick,
+// a trackpad's inertia or a long swipe can never carry the reader past a panel.
+(function () {
+  var el = document.querySelector('[data-stepper]');
+  if (!el) return;
+  var root = document.documentElement, rail = el.querySelector('.rail');
+  var items = [].slice.call(rail.children), LAST = items.length - 1;
+  var coarse = matchMedia('(pointer: coarse)').matches;
+  var k = 0, top = 0, travel = 1, prevY = scrollY;
+  var HOLD = 450, busyUntil = 0, lastT = -1e9, lastWheelAny = 0, used = false, acc = 0, bypassUntil = 0, bypassFrom = 0, T = null;
+  var peak = 0, prevMag = 0, decay = 0, tail = false, smooth = false, trough = Infinity;
+
+  function geom() { top = el.getBoundingClientRect().top + scrollY; travel = Math.max(1, el.offsetHeight - innerHeight); }
+  function yFor(i) { return Math.round(top + travel * i / LAST); }
+  function inZone(y) { return y >= top - 1 && y <= top + travel + 1; }
+  function edge(dir) { return (dir > 0 && k === LAST) || (dir < 0 && k === 0); }
+  function setY(y, killMomentum) {
+    prevY = y;
+    var sb = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    if (killMomentum) root.style.overflow = 'hidden';   // stops iOS momentum dead
+    window.scrollTo(0, y);
+    root.style.scrollBehavior = sb;
+    if (killMomentum) requestAnimationFrame(function () { root.style.overflow = ''; });
+  }
+  function render() {
+    var cs = getComputedStyle(rail), pad = parseFloat(cs.paddingLeft) || 0;
+    rail.style.transform = 'translate3d(' + (-(items[k].offsetLeft - pad)).toFixed(1) + 'px,0,0)';
+    // the rail is as tall as the panel on screen, so the video always sits right under its text
+    rail.style.height = ((parseFloat(cs.paddingTop) || 0) + items[k].offsetHeight) + 'px';
+    items.forEach(function (it, i) { it.classList.toggle('is-active', i === k); });
+    el.style.setProperty('--why-k', (k / LAST).toFixed(4));
+    el.dataset.i = Math.max(0, k - 1);
+    el.dataset.stop = k;
+  }
+  function go(dir) {
+    k = Math.max(0, Math.min(LAST, k + dir));
+    render();
+    setY(yFor(k));
+    busyUntil = performance.now() + HOLD;
+  }
+  // arriving from outside always lands on the near end, however hard the flick
+  function arrive(now) {
+    k = prevY < top ? 0 : LAST;
+    render();
+    used = true; busyUntil = now + HOLD;
+  }
+  function freshStream() { used = false; acc = 0; peak = 0; prevMag = 0; decay = 0; tail = false; smooth = false; trough = Infinity; }
+
+  addEventListener('scroll', function () {
+    var y = scrollY, now = performance.now();
+    if (now < bypassUntil) { prevY = y; return; }
+    geom();
+    if (inZone(y)) {
+      if (!inZone(prevY)) arrive(now);
+      var want = yFor(k);
+      if (Math.abs(y - want) > 1) setY(want, coarse && !T && now - lastWheelAny > 400);
+    }
+    prevY = scrollY;
+  }, { passive: true });
+
+  addEventListener('wheel', function (e) {
+    var now = performance.now();
+    // gaps are measured on the input's own timestamps, so a busy main thread cannot fake a new gesture
+    var ts = e.timeStamp || now, gap = ts - lastT;
+    lastT = ts; lastWheelAny = now;
+    if (e.ctrlKey || Math.abs(e.deltaX) > Math.abs(e.deltaY) || now < bypassUntil) return;
+    geom();
+    if (!inZone(scrollY)) return;
+    if (!inZone(prevY)) { arrive(now); setY(yFor(k)); if (e.cancelable) e.preventDefault(); return; }
+    var dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? innerHeight : 1), mag = Math.abs(dy);
+    // a new gesture: a real pause in the stream, or a fresh push on top of a smoothly dying inertia tail
+    if (gap > 110 || (used && tail && now > busyUntil && mag >= 16 && mag >= trough * 2.5)) freshStream();
+    // follow the stream's shape: a tail is a gradual decay from a real flick, not a slow or hesitant drag
+    if (mag > peak) { peak = mag; decay = 0; tail = false; smooth = true; trough = mag; }
+    else {
+      var gradual = mag <= prevMag * 1.1 + 1.5 && mag >= prevMag * 0.5 - 1;
+      if (!gradual) smooth = false;   // any break since the peak means this is not a momentum tail
+      decay = gradual ? decay + 1 : 0;
+      trough = Math.min(trough, mag);
+      if (smooth && peak >= 24 && decay >= 6 && mag <= peak * 0.35) tail = true;
+    }
+    prevMag = mag;
+    if (!dy) { if (e.cancelable) e.preventDefault(); return; }
+    var dir = dy > 0 ? 1 : -1;
+    if (!used && now > busyUntil && edge(dir)) return;   // first and last panel hand the page back
+    if (e.cancelable) e.preventDefault();
+    if (used || now < busyUntil) return;
+    acc += dy;
+    if (Math.abs(acc) >= 14) { used = true; acc = 0; go(dir); }
+  }, { passive: false });
+
+  addEventListener('touchstart', function (e) {
+    T = null;
+    if (e.touches.length !== 1 || performance.now() < bypassUntil) return;
+    geom();
+    T = { y0: e.touches[0].clientY, dy: 0, dir: 0, cap: inZone(scrollY) };
+  }, { passive: true });
+  addEventListener('touchmove', function (e) {
+    if (!T || !T.cap) return;
+    if (e.touches.length !== 1) { T = null; return; }
+    T.dy = T.y0 - e.touches[0].clientY;
+    if (!T.dir) {
+      if (!T.dy) return;
+      T.dir = T.dy > 0 ? 1 : -1;
+      if (edge(T.dir) && performance.now() > busyUntil) { T.cap = false; return; }
+    }
+    if (e.cancelable) e.preventDefault();
+    if (!T.stepped && Math.abs(T.dy) > 30 && performance.now() > busyUntil && !edge(T.dir)) { T.stepped = true; go(T.dir); }
+  }, { passive: false });
+  addEventListener('touchend', function () {
+    var t = T; T = null;
+    if (t && t.cap && t.dir && !t.stepped && Math.abs(t.dy) > 30 && performance.now() > busyUntil && !edge(t.dir)) go(t.dir);
+  }, { passive: true });
+  addEventListener('touchcancel', function () { T = null; }, { passive: true });
+
+  addEventListener('keydown', function (e) {
+    if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === 'Home' || e.key === 'End' || e.key === 'Tab') { bypassFrom = performance.now(); bypassUntil = bypassFrom + (e.key === 'Tab' ? 900 : 2500); return; }
+    var t = e.target;
+    if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT|BUTTON)$/.test(t.tagName))) return;
+    var dir = e.key === 'ArrowDown' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey) ? 1
+      : e.key === 'ArrowUp' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey) ? -1 : 0;
+    if (!dir) return;
+    geom();
+    if (!inZone(scrollY) || edge(dir)) return;
+    e.preventDefault();
+    if (performance.now() > busyUntil) go(dir);
+  });
+
+  // in-page links (the nav and CTAs) glide straight through the section
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('a[href^="#"]')) { bypassFrom = performance.now(); bypassUntil = bypassFrom + 2500; }
+  });
+  addEventListener('scrollend', function () {
+    var now = performance.now();
+    if (now < bypassUntil && now - bypassFrom > 150) { bypassUntil = now + 80; prevY = scrollY; }
+  });
+
+  addEventListener('resize', function () { geom(); render(); if (inZone(scrollY)) setY(yFor(k)); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { geom(); render(); });
+
+  geom();
+  if (inZone(scrollY)) k = Math.max(0, Math.min(LAST, Math.round((scrollY - top) / travel * LAST)));
+  render();
+  if (inZone(scrollY)) setY(yFor(k));
+})();
+
+// Bespoke: the nav logo charges with the page; step-acts read --sc-p into an active index; loop clips follow the index.
+(function () {
+  var root = document.documentElement;
+  var steps = [].slice.call(document.querySelectorAll('[data-steps]'));
+  var stepper = document.querySelector('[data-stepper]');
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lastCharge = -1, lastKey = new Map(), lastIdx = new Map(), cur = new Map(), moved = new Map();
+  var DWELL = 420;
+  function vids(s) { return [].slice.call(s.querySelectorAll('video[data-loop]')); }
+  function syncVids(s, i) {
+    if (still) return;
+    var r = s.getBoundingClientRect(), on = r.top < innerHeight * 1.5 && r.bottom > -innerHeight * 0.5;
+    var key = on + ':' + i;
+    if (lastIdx.get(s) === key) return;
+    lastIdx.set(s, key);
+    vids(s).forEach(function (v, k) {
+      if (on && Math.abs(k - i) <= 1) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause();
+    });
+  }
+  function tick() {
+    var max = root.scrollHeight - innerHeight;
+    var g = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+    var c = g.toFixed(3);
+    if (c !== lastCharge) { root.style.setProperty('--charge', c); lastCharge = c; }
+    steps.forEach(function (s) {
+      var p = parseFloat(s.style.getPropertyValue('--sc-p')) || 0;
+      var n = +s.dataset.steps, x = p * n, i = Math.min(n - 1, Math.floor(x));
+      var key = x.toFixed(3), now = performance.now();
+      if (lastKey.get(s) !== key) {
+        lastKey.set(s, key);
+        for (var k = 0; k < n; k++) s.style.setProperty('--u' + k, Math.max(0, Math.min(1, x - k)).toFixed(3));
+      }
+      // steps advance one at a time with a minimum dwell, so a hard flick cannot skip a stage
+      var c = cur.has(s) ? cur.get(s) : i;
+      if (c !== i && now - (moved.get(s) || 0) > DWELL) { c += i > c ? 1 : -1; moved.set(s, now); }
+      if (!cur.has(s)) moved.set(s, now);
+      cur.set(s, c);
+      if (s.dataset.i !== String(c)) {
+        var prev = s.querySelector('.fl' + s.dataset.i);
+        if (prev) { prev.classList.add('is-out'); setTimeout(function () { prev.classList.remove('is-out'); }, 600); }
+        s.dataset.i = c;
+      }
+      if (s.querySelector('video[data-loop]')) syncVids(s, c);
+    });
+    if (stepper) syncVids(stepper, +stepper.dataset.i || 0);
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
